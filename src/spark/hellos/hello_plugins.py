@@ -1,8 +1,8 @@
 
 from spark.model import User
 from spark.model import Address
+from spark.plugin import HelloPlugin
 
-from .plugin import HelloPlugin
 
 DISCRETES = {}
 

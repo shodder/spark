@@ -4,6 +4,7 @@ import click
 from spark import Session
 from spark.model import User
 from spark.model import Address
+from spark.plugin import init_plugin
 
 
 @click.group()
@@ -35,7 +36,7 @@ def plugmein():
     u = User.query.first()
     click.echo(u.address.street)
 
-    from spark.hello_plugins import HelloModel
+    init_plugin(['src/spark/hellos'])
     from spark.goodbye_plugins import GoodbyeModel
     u.say_hello()
     u.address.say_hello()
