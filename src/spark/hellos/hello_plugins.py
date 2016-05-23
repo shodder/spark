@@ -19,35 +19,37 @@ def register(model):
 
 class HelloModel(HelloPlugin):
 
-    def __init__(self):
-        pass
+    def __init__(self, model):
+        self.model = model
 
-    def say_hello(self, model):
-        print('I got {} so...'.format(model))
-        print(type(model))
-        DISCRETES[type(model)]().say_hello(model)
+    def say_hello(self):
+        print('I got {} so...'.format(self.model))
+        print(type(self.model))
+        DISCRETES[type(self.model)](self.model).say_hello()
 
 
 
 @register(User)
 class UserHello():
 
-    def __init__(self):
+    def __init__(self, user):
+        self.user = user
         pass
 
-    def say_hello(self, user):
+    def say_hello(self):
         print('Hello {} {}'.format(
-            user.first_name, user.family_name))
+            self.user.first_name, self.user.family_name))
 
 
 @register(Address)
 class AddressHello():
 
-    def __init__(self):
+    def __init__(self, address):
+        self.address = address
         pass
 
-    def say_hello(self, address):
+    def say_hello(self):
         print('Lives at {} {}'.format(
-            address.house_num, address.street))
+            self.address.house_num, self.address.street))
 
 

@@ -8,6 +8,7 @@ from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship
 
 from . import Base, Session
+from .plugin import ModelPlugins
 from .plugin import HelloPlugin
 from .plugin import GoodbyePlugin
 
@@ -26,11 +27,11 @@ class User(Base):
 
     query = Session.query_property()
 
-    hellos = HelloPlugin.plugins
+    hellos = ModelPlugins(HelloPlugin)
 
     def say_hello(self):
         for hellos in self.hellos:
-            hellos().say_hello(self)
+            hellos().say_hello()
 
     goodbyes = GoodbyePlugin.plugins
 
@@ -52,11 +53,11 @@ class Address(Base):
 
     query = Session.query_property()
 
-    hellos = HelloPlugin.plugins
+    hellos = ModelPlugins(HelloPlugin)
 
     def say_hello(self):
         for hellos in self.hellos:
-            hellos().say_hello(self)
+            hellos().say_hello()
 
     goodbyes = GoodbyePlugin.plugins
 

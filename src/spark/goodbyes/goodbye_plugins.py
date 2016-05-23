@@ -1,8 +1,7 @@
 
 from spark.model import User
 from spark.model import Address
-
-from .plugin import GoodbyePlugin
+from spark.plugin import GoodbyePlugin
 
 DISCRETES = {}
 

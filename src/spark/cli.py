@@ -37,7 +37,8 @@ def plugmein():
     click.echo(u.address.street)
 
     init_plugin(['src/spark/hellos'])
-    from spark.goodbye_plugins import GoodbyeModel
+    from spark.hellos import HelloModel
+    from spark.goodbyes import GoodbyeModel
     u.say_hello()
     u.address.say_hello()
 
